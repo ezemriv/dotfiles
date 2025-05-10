@@ -2,7 +2,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="amuse"
 
-# your requested plugins
+# Zsh plugins
 plugins=(
   common-aliases
   uv
