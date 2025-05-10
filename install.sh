@@ -6,17 +6,17 @@ echo "▶ Bootstrapping Eze Codespace dotfiles…"
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 
-# 1.  keep OMZ fresh so the built-in uv plugin exists
+# 1. Pull latest OMZ (in case uv plugin was added recently)
 if [[ -d "$HOME/.oh-my-zsh" ]]; then
   git -C "$HOME/.oh-my-zsh" pull --quiet
 fi
 
-# 2.  Symlink tracked files
-ln -sf "$DOTFILES_DIR/.zshrc"    "$HOME/.zshrc"
-ln -sf "$DOTFILES_DIR/.aliases"  "$HOME/.aliases"
+# 2. Symlink core dotfiles
+ln -sf "$DOTFILES_DIR/.zshrc"     "$HOME/.zshrc"
+ln -sf "$DOTFILES_DIR/.aliases"   "$HOME/.aliases"
 ln -sf "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 
-# 3. Extra Zsh plugins not shipped with OMZ (clone once)
+# 3. Install zsh plugins if missing
 for repo in \
   "https://github.com/zsh-users/zsh-autosuggestions.git" \
   "https://github.com/zsh-users/zsh-syntax-highlighting.git"
@@ -26,7 +26,15 @@ do
     git clone --depth=1 "$repo" "$ZSH_CUSTOM/plugins/$name"
 done
 
-# 4. Python tooling
+# 4. Install Python tools
 python3 -m pip install --user --quiet uv ruff
+
+# 5. Install VS Code extensions (only inside Codespace)
+if command -v code &> /dev/null && [[ -f "$DOTFILES_DIR/vscode/extensions.txt" ]]; then
+  echo "▶ Installing VS Code extensions..."
+  while read -r ext; do
+    [[ -n "$ext" ]] && code --install-extension "$ext" || true
+  done < "$DOTFILES_DIR/vscode/extensions.txt"
+fi
 
 echo "✅ dotfiles install done"
