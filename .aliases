@@ -1,0 +1,18 @@
+# Custom aliases
+alias home='cd ~'
+alias c='clear'
+
+# Git shortcuts
+alias gs='git status -sb'
+
+# Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# Python env
+alias python='python3'
+alias pip='uv pip'
+alias venv='python -m venv .venv && source .venv/bin/activate'
+
+# Python tools
+alias ruff='python -m ruff'

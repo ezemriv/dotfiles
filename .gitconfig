@@ -1,0 +1,9 @@
+[user]
+    name  = Ezequiel M Rivero
+    email = ezequielmrivero@gmail.com
+[core]
+    editor = code --wait
+[color]
+    ui = auto
+[alias]
+    lg = log --graph --oneline --decorate --all

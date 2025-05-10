@@ -1,0 +1,45 @@
+// This file contains the settings for Visual Studio Code.
+{
+  /* ── 0.  General settings ── */
+  "files.autoSave": "afterDelay",
+  "explorer.confirmDelete": false,
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "workbench.colorTheme": "Default Light Modern",
+
+  /* ── 1.  Ruff everywhere (fast formatter, linter, import-sorter) ── */
+  "[python]": {
+    "editor.formatOnSave": true,                       // run formatter
+    "editor.defaultFormatter": "charliermarsh.ruff",   // Ruff ≈ Black+isort
+    "editor.codeActionsOnSave": {                      // extra on-save magic
+      "source.fixAll": "explicit",                     // autofix lint issues
+      "source.organizeImports": "explicit"             // tidy imports
+    }
+  },
+
+  /* ── 2.  Pylance static analysis & inlay hints ── */
+  "python.analysis.typeCheckingMode": "basic",         // off | basic | strict
+  "python.analysis.inlayHints.variableTypes": true,
+  "python.analysis.inlayHints.functionReturnTypes": true,
+
+  /* ── 3.  Test discovery & a clean test lens ── */
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestArgs": ["tests"],
+
+  /* ── 4.  Interpreter & terminal ergonomics ── */
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+
+  /* ── 5.  Editor hygiene ── */
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  /* ── 6.  Notebooks get the same treatment ── */
+  "notebook.formatOnSave.enabled": true,
+  "notebook.codeActionsOnSave": {
+    "notebook.source.fixAll": "explicit",
+    "notebook.source.organizeImports": "explicit"
+  }
+}
