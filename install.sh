@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "▶ Bootstrapping Codespace dotfiles…"
+echo "▶ Bootstrapping Eze Codespace dotfiles…"
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
@@ -26,6 +26,6 @@ do
 done :contentReference[oaicite:1]{index=1}
 
 # 4.  Python tooling (user site)
-python3 -m pip install --user --quiet uv ruff :contentReference[oaicite:2]{index=2}
+python3 -m pip install --user --quiet uv ruff
 
 echo "✅ dotfiles install done"
