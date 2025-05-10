@@ -16,16 +16,17 @@ ln -sf "$DOTFILES_DIR/.zshrc"    "$HOME/.zshrc"
 ln -sf "$DOTFILES_DIR/.aliases"  "$HOME/.aliases"
 ln -sf "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 
-# 3.  Extra Zsh plugins not shipped with OMZ (clone once)
+# 3. Extra Zsh plugins not shipped with OMZ (clone once)
 for repo in \
   "https://github.com/zsh-users/zsh-autosuggestions.git" \
   "https://github.com/zsh-users/zsh-syntax-highlighting.git"
 do
   name="${repo##*/}"
-  [[ -d "$ZSH_CUSTOM/plugins/$name" ]] || git clone --depth=1 "$repo" "$ZSH_CUSTOM/plugins/$name"
-done :contentReference[oaicite:1]{index=1}
+  [[ -d "$ZSH_CUSTOM/plugins/$name" ]] || \
+    git clone --depth=1 "$repo" "$ZSH_CUSTOM/plugins/$name"
+done
 
-# 4.  Python tooling (user site)
+# 4. Python tooling
 python3 -m pip install --user --quiet uv ruff
 
 echo "✅ dotfiles install done"
