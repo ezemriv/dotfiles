@@ -30,8 +30,10 @@ install_plugins() {
     "https://github.com/zsh-users/zsh-autosuggestions.git" \
     "https://github.com/zsh-users/zsh-syntax-highlighting.git"
   do
-    name="${repo##*/}"
+    # Strip off the “.git” to get the real plugin folder name
+    name="$(basename "$repo" .git)"
     dest="$ZSH_CUSTOM/plugins/$name"
+
     if [[ ! -d "$dest" ]]; then
       git clone --depth=1 "$repo" "$dest"
     fi
