@@ -2,7 +2,7 @@
 export PATH="$HOME/.local/bin:$PATH"
 
 ### [dotfiles] load aliases (if available)
-[[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
+[[ -f "$HOME/.zsh_aliases" ]] && source "$HOME/.zsh_aliases"
 
 ### [dotfiles] Oh My Zsh setup
 export ZSH="$HOME/.oh-my-zsh"
