@@ -1,0 +1,62 @@
+{
+  "name": "Eze’s Zsh + Python Codespace",
+
+  "customizations": {
+    "vscode": {
+      // 1) Editor + Python settings
+      "settings": {
+        // Global
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "files.autoSave": "afterDelay",
+        "explorer.confirmDelete": false,
+        "git.enableSmartCommit": true,
+        "git.autofetch": true,
+        "workbench.colorTheme": "Default Light Modern",
+
+        // Python-specific
+        "[python]": {
+          "editor.formatOnSave": true,
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+          }
+        },
+        "python.analysis.typeCheckingMode": "basic",
+        "python.analysis.inlayHints.variableTypes": true,
+        "python.analysis.inlayHints.functionReturnTypes": true
+      },
+
+      // 2) Extensions
+      "extensions": [
+        // Core Python support & linter/formatter
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+
+        // Jupyter / Notebooks
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "ms-toolsai.vscode-jupyter-slideshow",
+
+        // Productivity
+        "eamodio.gitlens",
+        "github.copilot",
+        "github.copilot-chat",
+        "github.vscode-github-actions",
+        "mechatroner.rainbow-csv",
+        "tamasfe.even-better-toml",
+        "ralfstx.vscode-toggle-theme",
+
+        // Containers
+        "ms-azuretools.vscode-docker"
+        // "ms-vscode-remote.remote-containers"
+      ]
+    }
+  },
+
+  // Ensures login shells use Zsh
+  "postCreateCommand": "chsh -s $(which zsh) vscode || true"
+}
