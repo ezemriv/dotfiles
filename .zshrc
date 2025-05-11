@@ -6,7 +6,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ### [dotfiles] Oh My Zsh setup
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="agnoster"
+ZSH_THEME="amuse"
 plugins=(
   common-aliases
   uv
