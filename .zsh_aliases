@@ -18,3 +18,6 @@ alias venv='python -m venv .venv && source .venv/bin/activate'
 # Python tools
 alias ruffcheck='python -m ruff check .'
 alias rufffix='python -m ruff fix .'
+
+# uv
+alias 'uvs!'='uv clean && uv sync --reinstall'
