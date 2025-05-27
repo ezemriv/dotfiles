@@ -61,11 +61,25 @@ install_python_tools() {
   done
 }
 
+install_python_requirements() {
+  if [[ -f "$DOTFILES_DIR/requirements.txt" ]]; then
+    echo "▶ Installing Python packages from requirements.txt…"
+    if ! command -v python3 &>/dev/null; then
+      echo "❌ python3 not found; please install it first." >&2
+      exit 1
+    fi
+    python3 -m pip install --user -r "$DOTFILES_DIR/requirements.txt"
+  else
+    echo "ℹ️  No requirements.txt found, skipping Python package installation."
+  fi
+}
+
 main() {
   install_oh_my_zsh
   link_dotfiles
   install_plugins
   install_python_tools
+  install_python_requirements
   echo "✅ dotfiles install done"
 }
 
