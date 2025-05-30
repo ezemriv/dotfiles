@@ -20,7 +20,7 @@ link_dotfiles() {
   echo "▶ Symlinking core dotfiles…"
   ln -sf "$DOTFILES_DIR/.zshrc"       "$HOME/.zshrc"
   ln -sf "$DOTFILES_DIR/.zsh_aliases" "$HOME/.zsh_aliases"
-  ln -sf "$DOTFILES_DIR/.gitconfig"   "$HOME/.gitconfig"
+  #ln -sf "$DOTFILES_DIR/.gitconfig"   "$HOME/.gitconfig"
   ln -sf "$DOTFILES_DIR/.bashrc"        "$HOME/.bashrc"
 }
 
