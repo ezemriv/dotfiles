@@ -21,3 +21,9 @@ plugins=(
 
 # Completion
 autoload -Uz compinit && compinit
+
+#-------------------#
+### Env variables ###
+#-------------------#
+
+export UV_LINK_MODE=copy
