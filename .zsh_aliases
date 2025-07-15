@@ -1,12 +1,38 @@
-# Custom aliases
-alias home='cd ~'
-alias c='clear'
-alias ll='ls -lhaG'
+alias aliases='cat ~/.bash_aliases'
 
-# Git shortcuts
-alias gs='git status -sb'
+# UV
+alias uvs='uv sync --trusted-host artifacts.cloud.caixabank.com'
+alias 'uvs!'='uv clean && uv sync --trusted-host artifacts.cloud.caixabank.com --reinstall'
+alias uvexp='uv export --format requirements-txt --no-hashes --output-file requirements.txt --quiet'
+alias uvr='uv run'
+alias uva='uv add --trusted-host artifacts.cloud.caixabank.com'
+
+# GIT
+alias gs='git status'
+alias ga='git add'
+alias gb='git branch'
+alias gbd='git branch --delete'
+alias gc='git commit --verbose'
+alias gcmsg='git commit --message'
+alias gco='git checkout'
+alias gdt='git diff-tree --no-commit-id --name-only -r'
+alias ggpull='git pull origin "$(git_current_branch)"'
+alias ggpush='git push origin "$(git_current_branch)"'
+alias gl='git pull'
+alias gp='git push'
+alias gpoat='git push origin --all && git push origin --tags'
+alias gpsup='git push --set-upstream origin $(git_current_branch)'
+alias grrm='git remote remove'
+alias grv='git remote --verbose'
+alias gta='git tag --annotate'
+
+# Others
+alias c='clear'
+alias tree='find . -type d \( -path "*/.git*" -o -path "*/.venv*" -o -path "*/venv*" -o -path "*/__pycache__*" -o -path "*/.ruff_cache*" -o -path "*/.pytest_cache*" -o -path "*/build*" -o -path "*/dist*" -o -path "*/.mypy_cache*" -o -path "*/.tox*" \) -prune -o -print'
+alias webtest='curl https://www.google.com --silent --head --fail && echo "Internet is working" || echo "No internet connection"'
 
 # Navigation
+alias home='cd ~'
 alias ..='cd ..'
 alias ...='cd ../..'
 
@@ -16,8 +42,5 @@ alias pip='uv pip'
 alias venv='python -m venv .venv && source .venv/bin/activate'
 
 # Python tools
-alias ruffcheck='python -m ruff check .'
-alias rufffix='python -m ruff fix .'
-
-# uv
-alias 'uvs!'='uv clean && uv sync --reinstall'
+alias ruffcheck='uv run ruff check .'
+alias rufffix='uv run ruff fix .'
